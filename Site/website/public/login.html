@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="Css/log-reg.css">
+</head>
+<body>
+
+    <main>
+        <div class="container-login">
+            <figure class="content-img">
+                <img src="Imgs/login-bike.jpg" alt="">
+            </figure>
+            <!-- Conteúdo a direita -->
+            <div class="content-form">
+                <!-- Inicio Logo -->
+                <figure class="logo">
+                    <a href="index.html"><img src="Imgs/Icon/logo-completo.svg" alt=""></a>
+                </figure>
+                <!-- Fim Logo -->
+                <!-- Quadro Formulario -->
+                <div class="content-form-login">
+                    <!-- Menu superior -->
+                    <div class="form-login-top">
+                        <!-- Campo Usuario -->
+                        <div class="input-login">
+                            <label>Usuário:</label>
+                            <input id="ipt_usuario_login" onkeyup="validacao_usuario_login()" action="//localhost:3000/login" type="text" name="login" placeholder="Digite seu usuário">
+                            <span class="form-validation-false" id="msg_usuario_validation_login"></span>
+                        </div>
+                        <!-- Campo Senha -->
+                        <div class="input-login">
+                            <label>Senha:</label>
+                            <input id="ipt_senha_login" onkeyup="validacao_senha_login()" action="//localhost:3000/login" type="password" name="senha" placeholder="Digite sua senha">
+                            <span  class="form-validation-false" id="msg_senha_validation_login"></span>
+                        </div>
+                    </div>
+                    <!-- Esqueceu sua senha? -->
+                    <div class="forget-password">
+                        Esqueceu a <a href=""><span>senha?</span></a>
+                    </div>
+                    <span  class="form-validation-false" id="msg_senha_validation_login"></span>
+                    <!-- Fim Esqueceu sua senha -->
+                    <!-- Botões de Nav -->
+                    <div class="form-btn">
+                        <button id="btn_entrar" onclick="validacao_login()">Entrar</button>
+                    </div>
+                    <!-- Fim Botões -->
+                    <!-- Mensagem Validação -->
+                    <span class="msg-validation" id="msg_login"></span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
+
+<script>
+
+//Expressão Usuário
+var usuarioReg = /^[a-zA-Z0-9_-]{5,35}$/;
+
+//Expressão Senha
+var senhaReg = /^(?=.*[0-9]{3})(?=.*[A-Z]{1})(?=.*[a-z]{1})[a-zA-Z0-9]{6,}$/;
+
+function validacao_usuario_login(){
+    // Variáveis Login
+    var usuario_login = ipt_usuario_login.value;
+    // Verifica Usuário
+    if (usuario_login.match(usuarioReg) || usuario_login.match(senhaReg)){
+        msg_usuario_validation_login.innerHTML = '';
+        msg_usuario_validation_login.style.color = 'var(--green)';
+        ipt_usuario_login.style.border = '1px solid var(--green)';
+        ipt_usuario_login.style.color = 'var(--green)';
+    } else{
+        msg_usuario_validation_login.innerHTML = 'Insira um usuário válido';
+        msg_usuario_validation_login.style.color = 'var(--redText)';
+        ipt_usuario_login.style.color = 'var(--redText)';
+        ipt_usuario_login.style.border = '1px solid var(--red)';
+    }
+}
+
+function validacao_senha_login(){
+    // Variáveis Senha
+    var senha_login = ipt_senha_login.value;
+    // Verifica Senha
+    if (senha_login.match(senhaReg)){
+        msg_senha_validation_login.innerHTML = '';
+        msg_senha_validation_login.style.color = 'var(--green)';
+        ipt_senha_login.style.border = '1px solid var(--green)';
+        ipt_senha_login.style.color = 'var(--green)';
+    } else{
+        msg_senha_validation_login.innerHTML = 'Insira uma senha válida';
+        msg_senha_validation_login.style.color = 'var(--redText)';
+        ipt_senha_login.style.color = 'var(--redText)';
+        ipt_senha_login.style.border = '1px solid var(--red)';
+    }
+}
+
+// Validação no Botão
+function validacao_login(){
+    var usuario_login = ipt_usuario_login.value;
+    var senha_login = ipt_senha_login.value;
+    if(usuario_login.match(usuarioReg) && senha_login.match(senhaReg)){
+        msg_login.style.display = 'none';
+    } else{
+        msg_login.style.display = 'block';
+        msg_login.innerHTML =  'Usuário ou Senha inválida. Tente novamente';
+    } 
+}
+</script>

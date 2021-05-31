@@ -1,0 +1,272 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+}
+
+:root{
+    --primary: #EB1C24;
+    --transparent: #f50009a1;
+    --dark_grey: #201E1E;
+    --grey: #DFDFDF;
+    --white: #FFFF;
+    --green: #48b16c;
+    --red: #D2200B;
+}
+
+.content{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2em;
+}
+
+.title {
+    font-size: 4em;
+    color: var(--white);
+    font-weight: 600;
+}
+
+.title-contact {
+    font-size: 3em;
+    color: var(--white);
+    font-weight: 600;
+    width: 7em;
+    margin-left: 1em;
+}
+
+.text {
+    font-size: 2em;
+    font-style: italic;
+    color: var(--grey);
+    padding-top: 1.2em;
+    max-width: 18em;
+}
+
+.text-full-pag {
+    font-size: 2em;
+    font-style: italic;
+    color: var(--grey);
+    padding-top: 1.2em;
+    max-width: 45em;
+    justify-content: start;
+}
+
+.text-tiny {
+    font-size: 1.5em;
+    font-style: italic;
+    color: var(--grey);
+    padding-top: 1.2em;
+    max-width: 30em;
+}
+
+.text-footer {
+    font-size: 0.8em;
+    font-style: italic;
+    color: var(--grey);
+    padding-top: 1.2em;
+    max-width: 18em;
+}
+
+.logo img {
+    width: 80px;
+}
+
+.header header {
+    height: 100px;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+}
+
+.header nav {
+    display: flex;
+    height: 100px;
+    padding: 0 2em;
+    align-items: center;
+    justify-content: center;
+    background: var(--dark_grey);
+}
+
+.header a {
+    text-decoration: none;
+    color: var(--grey);
+}
+
+.header ul {
+    color: var(--grey);
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 63px;
+    list-style: none;
+    text-align: center;
+    width: 70vw;
+    justify-content: center;
+}
+
+.button-login {
+    width: 6em;
+    height: 3em;
+    background-color: var(--transparent);
+    color: var(--white);
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 1em;
+    border: 3px solid var(--primary);
+    letter-spacing: 0.25px;
+    cursor: pointer;
+}
+
+.button-register {
+    width: 15em;
+    margin-right: 9.5em;
+    height: 4em;
+    background-color: var(--transparent);
+    color: var(--white);
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 1em;
+    border: 3px solid var(--primary);
+    letter-spacing: 1.25px;
+    cursor: pointer;
+}
+
+.container-hero{
+    height: 95vh;
+    background-image: url(../Imgs/montanha.jpg);
+    background-size: 1920px 1280px;
+    background-repeat: no-repeat;
+    padding-left: 5em;
+    display: flex;
+}
+
+.content-hero{
+    display: flex;
+    width: 96vw;
+}
+
+.hero{
+    text-align: right;
+    padding-top: 25em;
+    padding-left: 12em;
+}
+
+.hero h1 {
+    color: var(--grey);
+    font-size: 7em;
+    padding-left: 1em;
+    margin-bottom: -0.5em;
+}
+
+.hero p {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 4em;
+    padding-right: 0.8em;
+}
+
+.orange-bar {
+    background-color: var(--primary);
+    height: 5em;
+}
+
+.container-dark {
+    justify-content: center;
+    background-color: var(--dark_grey);
+}
+
+.container-light {
+    justify-content: center;
+    background-color: var(--primary);
+}
+
+.content-sub {
+    max-width: 85%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5em 0;
+}
+
+.content-sub-full-pag {
+    max-width: 85%;
+    margin: auto;
+    padding: 5em 0;
+}
+
+.box-img img {
+    width: 45em;
+    height: 32em;
+    border-radius: 4em;
+}
+
+.footer{
+    background: var(--primary);
+}
+.container-footer{
+    display: flex;
+    align-items: center;
+    padding: 1.5em 3em 0;
+}
+.footer-about{
+    display: flex;
+    flex-direction: column;
+}
+.footer-about img{
+    width: 8em;
+}
+.footer-about p{
+    font-size: 0.8em;
+    white-space: pre-line;
+}
+.footer-title{  
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--grey);
+    letter-spacing: 1px;
+}
+.nav-footer{
+    padding-left: 30em;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 15em;
+    list-style: none;
+    text-align: left;
+    justify-content: center;
+}
+.nav-footer > ul > li{
+    list-style: none;
+    font-size: 0.95em;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.nav-footer li a{
+    text-decoration: none;
+    color: var(--grey);
+}
+.copyright{
+    padding: 1em 3em;
+}
+.copyright span{
+    color: var(--grey);
+    font-size: 0.8em;
+}
+

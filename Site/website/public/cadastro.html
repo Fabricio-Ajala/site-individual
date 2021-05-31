@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="Css/log-reg.css">
+</head>
+
+<body>
+    <main>
+        <div class="container-reg">
+            <figure class="content-img">
+                <img src="Imgs/paisagem.jpg" alt="">
+            </figure>
+            <!-- Conteúdo a direita -->
+            <div class="content-form">
+                <!-- Inicio Logo -->
+                <figure class="logo">
+                    <a href="index.html"><img src="Imgs/Icon/logo-completo.svg" alt=""></a>
+                </figure>
+                <!-- Fim Logo -->
+                <!-- Quadro Formulario -->
+                <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+                <div class="content-form-register">
+                    <!-- Menu superior -->
+                    <div class="form-register-top">
+                        <!-- Campo Nome -->
+                        <div class="input-register">
+                            <label>Nome:</label>
+                            <input id="ipt_name_register" onkeyup="validacao_name_register()" type="text" autofocus="autofocus"
+                            name="nome" placeholder="Fulano">
+                            <span class="form-validation-false" id="msg_name_validation_register"></span>
+                        </div>
+                        <!-- Campo Sobrenome -->
+                        <div class="input-register">
+                            <label>Sobrenome:</label>
+                            <input id="ipt_lastname_register" onkeyup="validacao_lastname_register()" type="text"
+                            name="sobrenome" placeholder="Silva">
+                            <span class="form-validation-false" id="msg_lastname_validation_register"></span>
+                        </div>
+                        <!-- Campo Usuario -->
+                        <div class="input-register">
+                            <label>Usuário:</label>
+                            <input id="ipt_usuario_register" onkeyup="validacao_usuario_register()" type="text"
+                            name="login" placeholder="Digite seu usuario">
+                            <span class="form-validation-false" id="msg_usuario_validation_register"></span>
+                        </div>
+                        <!-- Campo Senha -->
+                        <div class="input-register">
+                            <label>Senha:</label>
+                            <input id="ipt_senha_register" onkeyup="validacao_senha_register()" type="password"
+                            name="senha" placeholder="Digite sua senha">
+                            <span class="form-validation-false" id="msg_senha_validation_register"></span>
+                        </div>
+                    </div>
+                    <!-- Menu inferior -->
+                    <div class="form-register-bottom">
+                        <div>
+                            <label>E-Mail</label>
+                            <input id="ipt_email_register" onkeyup="validacao_email_register()" type="text"
+                            name="email" placeholder="fulano@dominio.com">
+                            <span class="form-validation-false" id="msg_email_validation_register"></span>
+                        </div>
+                    </div>
+                    <!-- Botões de Nav -->
+                    <div class="form-btn">
+                        <button id="btn_entrar" type="button" onclick="valida_cadastro()">Cadastrar</button>
+                    </div>
+                    <!-- Fim Botões -->
+                    <!-- Frase já é cadastrado? -->
+                    <div class="already-member">
+                        Já é cadastrado? <a href="login.html"><span>Clique Aqui!</span></a>
+                    </div>
+                    <!-- Fim Frase -->
+                </div>
+            </form>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
+
+<script>
+
+// Expressões Regulares
+//Expressão Nome
+var nameReg = /^[À-úA-z ]{1,}$/;
+//Expressão Sobrenome
+var lastnameReg = /^[À-úA-z ]{1,}$/;
+// Expressão Email
+
+var emailReg = /^([À-úA-z0-9._-]+@[a-z0-9._-]+\.[A-z0-9_-]+)$/;
+//Expressão Usuário
+var userReg = /^[A-z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/;
+//Expressão Senha
+var passReg = /^(?=.*[0-9]{3})(?=.*[A-z]{1})[A-z0-9]{6,}$/;
+
+// Validacao Nome
+function validacao_name_register() {
+        var name = ipt_name_register.value;
+        // Verifica Nome
+        if (name.match(nameReg)) {
+            msg_name_validation_register.innerHTML = '';
+            msg_name_validation_register.style.color = 'var(--green)';
+            ipt_name_register.style.border = '1px solid var(--green)';
+            ipt_name_register.style.color = 'var(--green)';
+        } else {
+            msg_name_validation_register.innerHTML = 'Verifique o campo preenchido';
+            msg_name_validation_register.style.color = 'var(--redText)';
+            ipt_name_register.style.color = 'var(--redText)';
+            ipt_name_register.style.border = '1px solid var(--red)';
+        }
+    }
+
+// Validacao Sobrenome
+function validacao_lastname_register() {
+        var lastname = ipt_lastname_register.value;
+        // Verifica Sobrenome
+        if (lastname.match(lastnameReg)) {
+            msg_lastname_validation_register.innerHTML = '';
+            msg_lastname_validation_register.style.color = 'var(--green)';
+            ipt_lastname_register.style.border = '1px solid var(--green)';
+            ipt_lastname_register.style.color = 'var(--green)';
+        } else {
+            msg_lastname_validation_register.innerHTML = 'Verifique o campo preenchido';
+            msg_lastname_validation_register.style.color = 'var(--redText)';
+            ipt_lastname_register.style.color = 'var(--redText)';
+            ipt_lastname_register.style.border = '1px solid var(--red)';
+        }
+    }
+
+// Validacao Email
+function validacao_email_register() {
+        // Variável E-mail
+        var email = ipt_email_register.value;
+        // Verifica E-mail
+        if (email.match(emailReg)) {
+            msg_email_validation_register.innerHTML = '';
+            msg_email_validation_register.style.color = 'var(--green)';
+            ipt_email_register.style.border = '1px solid var(--green)';
+            ipt_email_register.style.color = 'var(--green)';
+        } else {
+            msg_email_validation_register.innerHTML = 'Insira um e-mail válido';
+            msg_email_validation_register.style.color = 'var(--redText)';
+            ipt_email_register.style.color = 'var(--redText)';
+            ipt_email_register.style.border = '1px solid var(--red)';
+        }
+    }
+
+// Validacao Usuário
+function validacao_usuario_register() {
+        // Variável Usuário
+        var user = ipt_usuario_register.value;
+        // Verifica Usuário
+        if (user.match(userReg)) {
+            msg_usuario_validation_register.innerHTML = '';
+            msg_usuario_validation_register.style.color = 'var(--green)';
+            ipt_usuario_register.style.border = '1px solid var(--green)';
+            ipt_usuario_register.style.color = 'var(--green)';
+        } else {
+            msg_usuario_validation_register.innerHTML = 'Insira um usuário válido';
+            msg_usuario_validation_register.style.color = 'var(--redText)';
+            ipt_usuario_register.style.color = 'var(--redText)';
+            ipt_usuario_register.style.border = '1px solid var(--red)';
+        }
+    }
+
+// Validacao Senha
+function validacao_senha_register() {
+        var password = ipt_senha_register.value;
+        // Verifica Senha
+        if (password.match(passReg)) {
+            msg_senha_validation_register.innerHTML = '';
+            msg_senha_validation_register.style.color = 'var(--green)';
+            ipt_senha_register.style.border = '1px solid var(--green)';
+            ipt_senha_register.style.color = 'var(--green)';
+        } else {
+            msg_senha_validation_register.innerHTML = 'A senha deve conter pelo menos 6 dígitos,<br>1 letra maiúscula, <br>1 letra minúscula <br>e 3 números';
+            msg_senha_validation_register.style.color = 'var(--redText)';
+            ipt_senha_register.style.color = 'var(--redText)';
+            ipt_senha_register.style.border = '1px solid var(--red)';
+        }
+    }
+
+// Valida Cadastro
+function valida_cadastro(){
+    // Valores dos inputs
+    var name = ipt_name_register.value;
+    var lastname = ipt_lastname_register.value;
+    var user = ipt_usuario_register.value;
+    var password = ipt_senha_register.value;
+    var email = ipt_email_register.value;
+    // Valida Campos
+    if((name.match(nameReg) && lastname.match(lastnameReg) && email.match(emailReg) && user.match(userReg) && password.match(passReg))){
+        cadastrar();
+    } else{
+        msg_register.style.display = 'block';
+        msg_register.innerHTML = `Verifique os campos!`;
+    }
+}
+
+// Cadastra Usuário
+function cadastrar() {
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+            if (response.ok){
+                window.location.href='login.html';
+            } else {
+                msg_register.style.display = 'block';
+                msg_register.innerHTML = `Usuario já existe!`;
+            }
+        });
+
+        return false;
+    }
+
+
+</script>
